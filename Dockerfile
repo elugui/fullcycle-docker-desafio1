@@ -1,7 +1,7 @@
 FROM golang:1.24 AS builder
 WORKDIR /app
-COPY ./desafio1/ .
-RUN go build main.go
+COPY ./src/ .
+RUN go build -ldflags="-s -w" -gcflags="all=-l -B" main.go
 
 FROM scratch
 WORKDIR /app
